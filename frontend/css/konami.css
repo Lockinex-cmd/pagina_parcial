@@ -1,0 +1,168 @@
+/* Fuente retro */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Estilos Konami */
+.konami-active {
+    animation: rainbowBg 5s linear infinite;
+}
+
+@keyframes rainbowBg {
+    0% { background-color: #ff3e4d; }
+    20% { background-color: #ffeb3b; }
+    40% { background-color: #4caf50; }
+    60% { background-color: #2196f3; }
+    80% { background-color: #9c27b0; }
+    100% { background-color: #ff3e4d; }
+}
+
+.konami-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(255, 62, 77, 0.7);
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: translate(-50%, -50%) scale(1); }
+    to { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.konami-alert button {
+    background: linear-gradient(45deg, #FF3E4D, #FF6B6B);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Estilos base */
+.waifu-dodge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+#game-canvas {
+    display: block;
+    margin: 20px auto;
+    border: 4px solid #9c27b0;
+    background: #1a0933;
+    box-shadow: 0 0 20px #6a1b9a;
+}
+
+.game-header {
+    padding: 10px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid #9c27b0;
+}
+
+.game-header div {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.game-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#close-game {
+    background: #e91e63;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-family: 'Press Start 2P';
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+#close-game:hover {
+    background: #ff5722;
+    transform: scale(1.05);
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border: 4px solid #e91e63;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.game-over h2 {
+    color: #ffeb3b;
+    margin-bottom: 20px;
+}
+
+.coupon {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed #ffeb3b;
+}
+
+.coupon span {
+    color: #ffeb3b;
+    font-size: 18px;
+}
+
+#copy-coupon, #restart {
+    background: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#copy-coupon:hover, #restart:hover {
+    background: #8bc34a;
+}
+
+/* Efecto de escaneo CRT */
+.crt-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0.1) 50%, rgba(0, 0, 0, 0.2) 50%);
+    background-size: 100% 4px;
+    z-index: 10000;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
