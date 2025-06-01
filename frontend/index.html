@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda YumeSugoi - Tienda Virtual de Animes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/categorias-productos.css">
+    <link rel="stylesheet" href="css/konami.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('inicio'); 
+        });
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const categories = document.querySelectorAll('.category');
+
+            categories.forEach(category => {
+                const categoryName = category.querySelector('h3').textContent.toLowerCase();
+                if (categoryName.includes(query)) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        }
+
+        function mostrarRegistro() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('registerSection').style.display = 'block';
+        }
+
+        function mostrarLogin() {
+            document.getElementById('registerSection').style.display = 'none';
+            document.getElementById('loginSection').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <img src="img/logo.png" alt="Logo YumeSugoi" class="logo-top-left">
+    <button class="btn-iniciar-sesion" onclick="showSection('miCuenta')">
+        <i class="fas fa-user"></i> Iniciar sesión
+    </button>
+    
+    <header>
+      <div class="logo-title-container">
+        <h1 onclick="showSection('inicio')">Tienda YumeSugoi</h1>
+      </div>
+      <h3>Todo el poder del anime, a un clic de tu mundo.</h3>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <a href="#" onclick="showSection('inicio')"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#" onclick="showSection('tienda')"><i class="fas fa-store"></i> Tienda</a>
+            <a href="#" onclick="showSection('nosotros')"><i class="fas fa-info-circle"></i> Nosotros</a>
+            <a href="#" onclick="showSection('contacto')"><i class="fas fa-envelope"></i> Contacto</a>
+        </div>
+    </nav>
+
+    <section id="inicio">
+      <div class="container">
+          <div class="inicio">
+              <div class="info">
+                  <p><i class="fas fa-check-circle" style="color: var(--accent);"></i> Figuras de colección | Manga | Peluches | Accesorios | Moda | Ramen y Dulces!</p>
+                  <p><i class="fas fa-star" style="color: var(--primary);"></i> Punto Oficial de Crunchyroll</p>
+                  <p><i class="fas fa-truck" style="color: var(--accent);"></i> Envíos a todo el país</p>
+                  <a href="#" onclick="showSection('tienda')" class="btn">
+                      <i class="fas fa-store"></i> Ver toda la tienda
+                  </a>
+              </div>
+              <div class="hero-media">
+                  <img src="img/animes.jpg" alt="Banner de Anime" class="hero-image">
+              </div>
+          </div>
+          
+          <!-- Sección del video debajo -->
+          <div class="video-presentacion">
+              <h3 class="video-title">Conoce nuestra tienda</h3>
+              <div class="video-container">
+                  <video autoplay muted loop playsinline controls>
+                      <source src="img/presentacion.mp4">
+                      Tu navegador no soporta el elemento de video.
+                  </video>
+              </div>
+          </div>
+          <!-- Nueva sección del juego -->
+      <div class="juego-scratch" style="display: flex; flex-direction: column; align-items: center;">
+    <h3 class="video-title" style="width: 100%; text-align: center; margin-bottom: 10px;">¡Juega con nosotros!</h3>
+    <div class="scratch-container" style="text-align: center; margin-top: 0;">
+        <iframe 
+            src="https://scratch.mit.edu/projects/1168596298/embed" 
+            allowtransparency="true" 
+            width="485" 
+            height="402" 
+            frameborder="0" 
+            scrolling="no" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+      <div class="video-catalogo">
+         <h3 class="video-title">Conoce nuestro catálogo</h3>
+         <div class="video-container-catalogo">
+            <video controls>
+            <source src="img/catalogo de imagenes.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+            </video>
+         </div>
+      </div>
+      </div>
+  </section>
+
+    <section id="tienda" style="display: none;">
+        <div class="container">
+            <h2>Nuestros Productos</h2>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar categorías...">
+                <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="categories">
+                <div class="category" onclick="showSection('categoria-manga')">
+                    <img src="img/manga.webp" alt="Manga">
+                    <h3>Manga</h3>
+                    <p>Amplia colección de mangas en español</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-figuras')">
+                    <img src="img/figura.jpg" alt="Figuras">
+                    <h3>Figuras</h3>
+                    <p>Figuras de colección premium</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-peluches')">
+                    <img src="img/peluche.webp" alt="Peluches">
+                    <h3>Peluches</h3>
+                    <p>Peluches de tus personajes favoritos</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-accesorios')">
+                    <img src="img/accesorios.webp" alt="Artículos y Accesorios">
+                    <h3>Accesorios</h3>
+                    <p>Llaveros, pins, collares y más</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-escolar')">
+                    <img src="img/escolar.webp" alt="Escolar y Oficina">
+                    <h3>Escolar y Oficina</h3>
+                    <p>Cuadernos, bolígrafos y más</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-dulces')">
+                    <img src="img/dulces.jpg" alt="Dulces y Comestibles">
+                    <h3>Dulces Japoneses</h3>
+                    <p>Snacks, ramen y dulces tradicionales</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-moda')">
+                    <img src="img/ropa.jpg" alt="Moda">
+                    <h3>Moda Otaku</h3>
+                    <p>Camisetas, sudaderas y cosplay</p>
+                </div>
+                <div class="category" onclick="showSection('categoria-hogar')">
+                    <img src="img/hogar.jpg" alt="Hogar">
+                    <h3>Hogar</h3>
+                    <p>Artículos para decorar tu espacio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="categoria-manga" style="display: none;">
+      <div class="container">
+        <h2>Manga</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/naruto-vol1.webp" alt="Tomo #1 Naruto">
+            <h4>Tomo #1 Naruto</h4>
+            <p>$25.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/onepiece-vol1.webp" alt="Tomo #1 One Piece">
+            <h4>Tomo #1 One Piece</h4>
+            <p>$28.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/jujutsu-vol1.webp" alt="Tomo #1 Jujutsu Kaisen">
+            <h4>Tomo #1 Jujutsu Kaisen</h4>
+            <p>$27.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/aot-vol1.webp" alt="Tomo #1 Attack on Titan">
+            <h4>Tomo #1 Attack on Titan</h4>
+            <p>$29.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/dbs-vol1.webp" alt="Tomo #1 Dragon ball super">
+            <h4>Tomo #1 Dragon ball super</h4>
+            <p>$32.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/demonslayer-vol1.webp" alt="Tomo #1 Demon Slayer">
+            <h4>Tomo #1 Demon Slayer</h4>
+            <p>$28.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/chainsaw-vol1.webp" alt="Tomo #1 Chainsaw Man">
+            <h4>Tomo #1 Chainsaw Man</h4>
+            <p>$30.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/gantz-vol1.webp" alt="Tomo #1 Gantz">
+            <h4>Tomo #1 Gantz</h4>
+            <p>$30.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+      
+    <section id="categoria-figuras" style="display: none;">
+      <div class="container">
+        <h2>Figuras</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/goku-ssj.jpg" alt="Figura Goku SSJ">
+            <h4>Figura Goku SSJ</h4>
+            <p>$90.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/luffy-gear5.jpg" alt="Figura Luffy Gear 5">
+            <h4>Figura Luffy Gear 5</h4>
+            <p>$95.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/mikasa-figura.jpg" alt="Figura Mikasa">
+            <h4>Figura Mikasa Ackerman</h4>
+            <p>$110.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/levi-figura.jpg" alt="Figura Levi">
+            <h4>Figura Levi</h4>
+            <p>$100.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/nezuko-figura.jpg" alt="Figura Nezuko">
+            <h4>Figura Nezuko</h4>
+            <p>$105.000</p>
+            <button>Añadir al carrito</button>
+          </div>          
+          <div class="producto">
+            <img src="img/productos/gojo-led.jpg" alt="Figura Gojo en LED">
+            <h4>Figura Gojo LED</h4>
+            <p>$85.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/tanjiro-nezuko.jpg" alt="Figura Tanjiro y Nezuko">
+            <h4>Figura Especial Tanjiro/Nezuko</h4>
+            <p>$130.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+    
+    <section id="categoria-peluches" style="display: none;">
+      <div class="container">
+        <h2>Peluches</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/pikachu-peluche.jpg" alt="Peluche Pikachu">
+            <h4>Peluche Pikachu</h4>
+            <p>$35.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/totoro-peluche.jpg" alt="Peluche Totoro">
+            <h4>Peluche Totoro</h4>
+            <p>$42.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/eevee-peluche.jpg" alt="Peluche Eevee">
+            <h4>Peluche Eevee</h4>
+            <p>$39.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/doraemon-peluche.jpg" alt="Peluche Doraemon">
+            <h4>Peluche Doraemon</h4>
+            <p>$37.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/kirby-peluche.jpg" alt="Peluche Kirby">
+            <h4>Peluche Kirby</h4>
+            <p>$32.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/kitty-peluche.jpg" alt="Peluche Kitty">
+            <h4>Peluche Hello Kitty</h4>
+            <p>$31.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/sonic-peluche.jpg" alt="Peluche Sonic">
+            <h4>Peluche Sonic</h4>
+            <p>$34.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+    
+    <section id="categoria-accesorios" style="display: none;">
+      <div class="container">
+        <h2>Accesorios</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/collar-konoha.jpg" alt="Collar de Konoha">
+            <h4>Collar de Konoha</h4>
+            <p>$18.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/anillo-sharingan.jpg" alt="Anillo Sharingan">
+            <h4>Anillo de Sharingan</h4>
+            <p>$12.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/pulsera-dragonball.jpg" alt="Pulsera Dragon Ball">
+            <h4>Pulsera Dragon Ball</h4>
+            <p>$14.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/gorra-naruto.jpg" alt="Gorra de Naruto">
+            <h4>Gorra de Naruto</h4>
+            <p>$22.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/pin-aot.jpg" alt="Pin AOT">
+            <h4>Pin Attack on Titan</h4>
+            <p>$10.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/llavero-onepiece.jpg" alt="Llavero One Piece">
+            <h4>Llavero One Piece</h4>
+            <p>$12.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/aretes-sailormoon.jpg" alt="Aretes Sailor Moon">
+            <h4>Aretes Sailor Moon</h4>
+            <p>$15.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+    
+    <section id="categoria-escolar" style="display: none;">
+      <div class="container">
+        <h2>Escolar y Oficina</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/cuaderno-kimetsu.jpg" alt="Cuaderno Kimetsu">
+            <h4>Cuaderno Kimetsu</h4>
+            <p>$12.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/boligrafo-totoro.jpg" alt="Bolígrafo Totoro">
+            <h4>Bolígrafo Totoro</h4>
+            <p>$7.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/notas-ghibli.jpg" alt="Notas de Ghibli">
+            <h4>Notas de Ghibli</h4>
+            <p>$5.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/mochila-mha.jpg" alt="Mochila de My Hero Academia">
+            <h4>Mochila de My Hero Academia</h4>
+            <p>$85.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/calculadora-db.jpg" alt="Calculadora Dragon Ball">
+            <h4>Calculadora Dragon Ball</h4>
+            <p>$20.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/estuche-jujutsu.jpg" alt="Estuche Jujutsu Kaisen">
+            <h4>Estuche Jujutsu</h4>
+            <p>$18.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/agenda-tokyo.jpg" alt="Agenda Tokyo Revengers">
+            <h4>Agenda Tokyo Revengers</h4>
+            <p>$15.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+    
+    <section id="categoria-dulces" style="display: none;">
+      <div class="container">
+        <h2>Dulces Japoneses</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/pocky-chocolate.jpg" alt="Pocky Chocolate">
+            <h4>Pocky Chocolate</h4>
+            <p>$9.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/kitkat-matcha.jpg" alt="Kitkat Matcha">
+            <h4>Kitkat Matcha</h4>
+            <p>$12.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/mochi-fresa.jpg" alt="Mochi Fresa">
+            <h4>Mochi Fresa</h4>
+            <p>$8.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/calpis.jpg" alt="Calpis">
+            <h4>Calpis</h4>
+            <p>$4.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/ramen-ichiraku.jpg" alt="Ramen Ichiraku">
+            <h4>Ramen Ichiraku</h4>
+            <p>$15.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/dorayaki-pack.jpg" alt="Pack Dorayaki">
+            <h4>Pack Dorayaki</h4>
+            <p>$13.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/hi-chew.jpg" alt="Hi-Chew">
+            <h4>Hi-Chew</h4>
+            <p>$6.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+    
+    <section id="categoria-moda" style="display: none;">
+      <div class="container">
+        <h2>Moda Otaku</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/camiseta-tokyo.jpg" alt="Camiseta Tokyo Revengers">
+            <h4>Camiseta Tokyo Revengers</h4>
+            <p>$40.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/buzo-chainsaw.jpg" alt="Buzo Chainsaw Man">
+            <h4>Buzo Chainsaw Man</h4>
+            <p>$60.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/sudadera-mha.jpg" alt="Sudadera My Hero Academia">
+            <h4>Sudadera My Hero Academia</h4>
+            <p>$70.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/zapatos-dragonball.jpg" alt="Tennis Dragon Ball">
+            <h4>Tennis Dragon Ball</h4>
+            <p>$170.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/pantalon-jujutsu.jpg" alt="Pantalón Jujutsu">
+            <h4>Pantalón Jujutsu</h4>
+            <p>$65.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/chaqueta-aot.jpg" alt="Chaqueta AOT">
+            <h4>Chaqueta Attack on Titan</h4>
+            <p>$80.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/vestido-sailormoon.jpg" alt="Vestido Premium Sailormoon">
+            <h4>Vestido Premium Sailormoon</h4>
+            <p>$280.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+    
+    <section id="categoria-hogar" style="display: none;">
+      <div class="container">
+        <h2>Hogar</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="img/productos/taza-evangelion.jpg" alt="Taza Evangelion">
+            <h4>Taza Evangelion</h4>
+            <p>$22.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/funda-ghibli.jpg" alt="Funda Studio Ghibli">
+            <h4>Funda Studio Ghibli</h4>
+            <p>$18.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/cubiertos-naruto.jpg" alt="Cubiertos Naruto">
+            <h4>Cubiertos Naruto</h4>
+            <p>$14.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/poster-aot.jpg" alt="Poster Attack on Titan">
+            <h4>Poster Attack on Titan</h4>
+            <p>$7.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/cojin-jujutsu.jpg" alt="Cojín Jujutsu Kaisen">
+            <h4>Cojín Jujutsu Kaisen</h4>
+            <p>$30.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/alfombra-onepiece.jpg" alt="Alfombra One Piece">
+            <h4>Alfombra One Piece</h4>
+            <p>$45.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="img/productos/lampara-totoro.jpg" alt="Lámpara Totoro">
+            <h4>Lámpara Totoro</h4>
+            <p>$50.000</p>
+            <button>Añadir al carrito</button>
+          </div>
+        </div>
+        <button class="btn" onclick="showSection('tienda')">Volver a categorías</button>
+      </div>
+    </section>
+    
+      
+
+    <section id="nosotros" style="display: none;">
+        <div class="container">
+            <h2>Nosotros</h2>
+            <p>Bienvenidos a <strong>Tienda YumeSugoi</strong>, donde la pasión por la cultura japonesa cobra vida a través de una selección cuidadosamente curada de productos. Desde figuras coleccionables hasta ropa inspirada en tus series favoritas, nuestro objetivo es ofrecerte una experiencia de compra única y emocionante.</p>
+            
+            <p>Fundada en 2015 por un grupo de entusiastas del anime, nuestra tienda ha crecido de un pequeño local a una de las principales distribuidoras de productos otaku en la región. Nos enorgullecemos de trabajar directamente con proveedores oficiales para garantizar la autenticidad de todos nuestros productos.</p>
+            
+            <p>Nuestro equipo está compuesto por verdaderos fans que comparten tu pasión. No solo vendemos productos, vivimos y respiramos la cultura otaku, y estamos aquí para asesorarte y ayudarte a encontrar exactamente lo que buscas.</p>
+            
+            <p>Más que una tienda, somos una comunidad. Organizamos eventos, concursos y reuniones para fans. ¡Síguenos en redes sociales para no perderte nada!</p>
+        </div>
+    </section>
+
+    <section id="contacto" style="display: none;">
+        <div class="container">
+            <h2 class="contacto-header">Contacto</h2>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <img src="img/wpp.jpg" alt="WhatsApp">
+                    <p><i class="fab fa-whatsapp"></i> +57 350 8245173</p>
+                </div>
+                <div class="contact-method">
+                    <img src="img/email.jpg" alt="Email">
+                    <p><i class="fas fa-envelope"></i> Tyume@gmail.com</p>
+                </div>
+                <div class="contact-method">
+                    <img src="img/ubi.jpg" alt="Ubicación">
+                    <p><i class="fas fa-map-marker-alt"></i> Calle 12, Ciudad inventada</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; text-align: center;">
+                <h3>Horario de atención</h3>
+                <p>Lunes a Viernes: 9:00 AM - 7:00 PM</p>
+                <p>Sábados: 10:00 AM - 5:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="miCuenta" style="display: none;">
+        <div class="container">
+            <div class="account-management">
+                <!-- Sección de LOGIN -->
+                <div class="login" id="loginSection">
+                    <h2>ACCEDER</h2>
+                    <form id="loginForm">
+                        <label for="login-username">Nombre de usuario o correo electrónico:</label>
+                        <input type="text" id="login-username" name="login-username" required>
+                        
+                        <label for="login-password">Contraseña:</label>
+                        <input type="password" id="login-password" name="login-password" required>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label style="margin: 0;">
+                                <input type="checkbox" name="remember"> Recordarme
+                            </label>
+                            <a href="#" style="font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        
+                        <button type="submit"><i class="fas fa-sign-in-alt"></i> ACCESO</button>
+                        
+                        <div style="text-align: center; margin: 1rem 0;">
+                            <span style="background: #ddd; height: 1px; display: block; margin: 1rem 0; position: relative;">
+                                <span style="background: white; padding: 0 10px; position: absolute; top: -10px; left: calc(50% - 20px);">o</span>
+                            </span>
+                        </div>
+                        
+                        <a href="/api/auth/google" class="google-login-btn" style="background: #4285F4; display: flex; align-items: center; justify-content: center; padding: 10px; color: white; text-decoration: none; border-radius: 5px; margin-bottom: 1rem;">
+                            <i class="fab fa-google" style="margin-right: 10px;"></i> Continuar con Google
+                        </a>
+                        
+                        <a href="#" onclick="mostrarRegistro()">¿No tienes cuenta? Regístrate aquí</a>
+                    </form>
+                </div>
+
+                <!-- Sección de REGISTRO -->
+                <div class="register" id="registerSection" style="display: none;">
+                    <h2>REGISTRARSE</h2>
+                    <form id="registerForm">
+                        <label for="register-username">Nombre de usuario:</label>
+                        <input type="text" id="register-username" name="register-username" required>
+                        
+                        <label for="register-email">Correo electrónico:</label>
+                        <input type="email" id="register-email" name="register-email" required>
+                        
+                        <label for="register-password">Contraseña:</label>
+                        <input type="password" id="register-password" name="register-password" required>
+                        
+                        <label for="register-password-confirm">Confirmar contraseña:</label>
+                        <input type="password" id="register-password-confirm" name="register-password-confirm" required>
+                        
+                        <div style="margin: 1rem 0;">
+                            <label>
+                                <input type="checkbox" name="newsletter" checked> Suscribirme al newsletter
+                            </label>
+                        </div>
+                        
+                        <button type="submit"><i class="fas fa-user-plus"></i> REGISTRARSE</button>
+                        
+                        <a href="#" onclick="mostrarLogin()">¿Ya tienes cuenta? Inicia sesión aquí</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content container">
+            <div class="footer-section">
+                <h3>Tienda YumeSugoi</h3>
+                <p>Tu destino definitivo para productos de anime y cultura japonesa.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#" onclick="showSection('inicio')">Inicio</a>
+                <a href="#" onclick="showSection('tienda')">Tienda</a>
+                <a href="#" onclick="showSection('nosotros')">Nosotros</a>
+                <a href="#" onclick="showSection('contacto')">Contacto</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Política de privacidad</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Información</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Calle 12, Ciudad Inventada</p>
+                <p><i class="fas fa-phone"></i> +57 350 8245173</p>
+                <p><i class="fas fa-envelope"></i> Tyume@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Lunes a Viernes: 9AM - 7PM</p>
+            </div>
+        </div>
+        
+        <div class="copyright container">
+            <p>&copy; 2025 Tienda YumeSugoi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Guardar la sección actual en localStorage
+            localStorage.setItem('currentSection', sectionId);
+            
+            // Scroll suave al principio de la sección
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedSection = localStorage.getItem('currentSection');
+            showSection(savedSection || 'inicio');
+        });
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const categories = document.querySelectorAll('.category');
+
+            categories.forEach(category => {
+                const categoryName = category.querySelector('h3').textContent.toLowerCase();
+                if (categoryName.includes(query)) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        }
+
+        function mostrarRegistro() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('registerSection').style.display = 'block';
+        }
+
+        function mostrarLogin() {
+            document.getElementById('registerSection').style.display = 'none';
+            document.getElementById('loginSection').style.display = 'block';
+        }
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/konami.js"></script>
+</body>
+</html>
